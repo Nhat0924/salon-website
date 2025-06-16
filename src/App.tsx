@@ -150,7 +150,9 @@ function App() {
                 {/* Replace this with your company info */}
                 <strong>Nice Nail Lounge</strong><br />
                 3111 Florence Blvd, Florence, AL 35634<br />
-                Mon - Sat: 8AM - 5PM
+                <br></br>
+                Mon - Sat: 8AM - 5PM<br />
+                Sun: 1PM - 5PM
               </p>
             </div>
             <div className="footer-box contact-box">
@@ -159,7 +161,7 @@ function App() {
               <a href= "mailto:nicenaillounge@gmail.com">nicenaillounge@gmail.com</a>
             </div>
             <div className="footer-box social-box">
-              <h3>Social Media</h3>
+              <h3>Follow Us</h3>
               <p>
                 <a
                   href="https://www.facebook.com/p/Kims-Nails-100087780272339/"

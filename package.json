@@ -2,10 +2,10 @@
   "name": "salon-website",
   "homepage": "https://nhat0924.github.io/salon-website/",
   "private": false,
-  "version": "0.1.4",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host --port 5173",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
