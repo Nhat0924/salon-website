@@ -2,7 +2,7 @@
   "name": "salon-website",
   "homepage": "https://nhat0924.github.io/salon-website/",
   "private": false,
-  "version": "0.1.3",
+  "version": "0.1.4",
   "type": "module",
   "scripts": {
     "dev": "vite",
