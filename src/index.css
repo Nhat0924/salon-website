@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #060461;
+  color: #2d1b2c;
+}
+
+.main-wrapper{
+  width: 100%;
+  max-width: 1400px;   /* or whatever looks best for your design */
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 1.5rem;   /* keeps a nice gap on mobile */
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+}
