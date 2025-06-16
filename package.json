@@ -1,8 +1,8 @@
 {
   "name": "salon-website",
-  "homepage": "https://nhat0924.github.io/salon-website",
+  "homepage": "https://nicenaillounge.com",
   "private": false,
-  "version": "1.0.6",
+  "version": "1.0.8",
   "type": "module",
   "scripts": {
     "dev": "vite --host --port 5173",
