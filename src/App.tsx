@@ -151,7 +151,7 @@ function App() {
                 <strong>Nice Nail Lounge</strong><br />
                 3111 Florence Blvd, Florence, AL 35634<br />
                 <br></br>
-                Mon - Sat: 8AM - 5PM<br />
+                Mon - Sat: 9AM - 7PM<br />
                 Sun: 1PM - 5PM
               </p>
             </div>
