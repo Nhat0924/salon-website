@@ -7,6 +7,7 @@ import cPalette from '/src/assets/pexels-photo-3735624.webp'
 import pricing1 from '/src/assets/1.png'
 import pricing2 from '/src/assets/2.png'
 import facebookSVG from '/src/assets/icons8-facebook.svg'
+import instaSVG from '/src/assets/icons8-instagram.svg'
 
 
 function App() {
@@ -171,6 +172,14 @@ function App() {
                 >
                   {/* You can use a Facebook SVG or emoji for now */}
                   <img src={facebookSVG} alt="Facebook" className="facebook-svg-img" />
+                </a>
+                <a
+                  href="https://www.instagram.com/nicenaillounge/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="insta-link"
+                >
+                  <img src={instaSVG} alt="Instagram" className="instagram-svg-img" />
                 </a>
               </p>
             </div>
