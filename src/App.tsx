@@ -8,11 +8,44 @@ import pricing1 from '/src/assets/1.png'
 import pricing2 from '/src/assets/2.png'
 import facebookSVG from '/src/assets/icons8-facebook.svg'
 import instaSVG from '/src/assets/icons8-instagram.svg'
+import { useState } from 'react';
+import promoImg from '/src/assets/promo.png'
 
 
 function App() {
+  const [showPromo, setShowPromo] = useState(() => !localStorage.getItem("promoClosed"));
+  const handleClosePromo = () => {
+    setShowPromo(false);
+    localStorage.setItem("promoClosed", "true");
+  };
   return (
+    
     <div className="main-wrapper">
+      {/* PROMO POPUP */}
+      {showPromo && (
+        <div className="promo-modal">
+          <div className="promo-modal-content">
+            <button
+              className="close-btn"
+              onClick={handleClosePromo}
+              aria-label="Close promo"
+            >
+              ×
+            </button>
+            <img src={promoImg} alt="Promotion" className="promo-img" />
+          </div>
+        </div>
+      )}
+
+      <div className="promo-popup">
+        <button 
+          className="promo-popup-btn"
+          onClick={() => {
+            localStorage.removeItem("promoClosed");
+            window.location.reload();
+        }}>15% OFF ALL SERVICES! CLICK HERE TO VIEW PROMOTION DETAILS</button>
+      </div>
+
     {/* Logo and Navigation Bar */}
       <div className="one-third-bg">
         <div className="one-third-content">

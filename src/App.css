@@ -1,3 +1,31 @@
+.promo-popup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.promo-popup-btn {
+  background: #ffe066;        /* Bright yellow */
+  color: #234;                /* Dark text for contrast */
+  border: none;
+  border-radius: 2em;
+  padding: 1rem 2.5rem;
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+  transition: background 0.18s, color 0.15s, transform 0.12s;
+}
+
+.promo-popup-btn:hover, .promo-popup-btn:focus {
+  background: #ffd700;        /* Even brighter yellow on hover */
+  color: #222;
+  transform: translateY(-2px) scale(1.03);
+  outline: none;
+}
+
 .one-third-bg {
   width: 100vw;
   position: relative;
@@ -276,7 +304,7 @@
 }
 
 .left-content h2 {
-  margin-left: -17rem;
+  margin-left: -10rem;
   margin-right: 5rem;
   color: #b1b1b1
 }
@@ -334,7 +362,7 @@
   }
   .left-content h2 {
     font-size: 1.6rem;
-    margin-left: 0rem;
+    margin-left: 1rem;
     margin-right: 0.5rem;
   }
 }
@@ -434,4 +462,78 @@
     max-width: 100%;
     text-align: center;
   }
+}
+
+.promo-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(40, 38, 71, 0.44);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s;
+}
+
+.promo-modal-content {
+  background: #fff;
+  border-radius: 1.25em;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  max-width: 98vw;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  animation: popIn 0.25s;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 2.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 0rem;
+  align-self: flex-end;
+  transition: color 0.15s;
+  position: static;
+}
+.close-btn:hover {
+  color: #d74c4c;
+}
+
+.promo-img {
+  max-width: 85vw;
+  max-height: 75vh;
+  width: 510px;    /* Will scale down on small screens */
+  height: auto;
+  border-radius: 1.2em;
+  display: block;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+}
+
+/* Responsive: shrink modal/promo image on small screens */
+@media (max-width: 600px) {
+  .promo-modal-content {
+    padding: 1.2rem 0.2rem 1rem 0.2rem;
+    max-width: 99vw;
+  }
+  .promo-img {
+    max-width: 99vw;
+    width: 100vw;
+    border-radius: 0.6em;
+  }
+}
+
+/* Optional: fade/pop animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes popIn {
+  from { transform: scale(0.93); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
