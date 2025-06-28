@@ -1,4 +1,5 @@
 import './App.css'
+import { useRef, useEffect, useState } from 'react';
 import logo from '/src/assets/dark_nn.png'
 import heroImg from '/src/assets/chelson-tamares-SyCC0GQi5S4-unsplash.jpg'
 import nailCare from '/src/assets/pexels-cottonbro-3997386.jpg'
@@ -8,17 +9,19 @@ import pricing1 from '/src/assets/1.png'
 import pricing2 from '/src/assets/2.png'
 import facebookSVG from '/src/assets/icons8-facebook.svg'
 import instaSVG from '/src/assets/icons8-instagram.svg'
-import { useState } from 'react';
 import promoImg from '/src/assets/promo.png'
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useEffect } from 'react';
 
 function App() {
+  const mapRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-  if (!document.getElementById('map') || document.getElementById('map')._leaflet_id) return;
+  if (!mapRef.current) return;
 
-  const map = L.map('map').setView([34.832596, -87.616722], 13); // Florence, AL
+  // Prevent re-initializing if already rendered
+  if (mapRef.current.children.length > 0) return;
+
+  const map = L.map(mapRef.current).setView([34.832596, -87.616722], 13);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -29,7 +32,8 @@ function App() {
     .addTo(map)
     .bindPopup('Nice Nail Lounge')
     .openPopup();
-}, []);
+  }, []);
+
   const [showPromo, setShowPromo] = useState(() => !localStorage.getItem("promoClosed"));
   const handleClosePromo = () => {
     setShowPromo(false);
@@ -37,12 +41,6 @@ function App() {
   };
   return (
     <div className="main-wrapper">
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossOrigin=""/>
-       <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossOrigin=""></script>
       {/* PROMO POPUP */}
       {showPromo && (
         <div className="promo-modal">
@@ -239,7 +237,7 @@ function App() {
               </p>
             </div>
           </section>
-          <div id="map"></div>
+          <div id="map" ref={mapRef}></div>
         </div>
       </div>           
     </div>
