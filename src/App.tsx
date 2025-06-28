@@ -10,17 +10,39 @@ import facebookSVG from '/src/assets/icons8-facebook.svg'
 import instaSVG from '/src/assets/icons8-instagram.svg'
 import { useState } from 'react';
 import promoImg from '/src/assets/promo.png'
-
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+  if (!document.getElementById('map') || document.getElementById('map')._leaflet_id) return;
+
+  const map = L.map('map').setView([34.832596, -87.616722], 13); // Florence, AL
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  L.marker([34.832596, -87.616722])
+    .addTo(map)
+    .bindPopup('Nice Nail Lounge')
+    .openPopup();
+}, []);
   const [showPromo, setShowPromo] = useState(() => !localStorage.getItem("promoClosed"));
   const handleClosePromo = () => {
     setShowPromo(false);
     localStorage.setItem("promoClosed", "true");
   };
   return (
-    
     <div className="main-wrapper">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossOrigin=""/>
+       <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossOrigin=""></script>
       {/* PROMO POPUP */}
       {showPromo && (
         <div className="promo-modal">
@@ -217,6 +239,7 @@ function App() {
               </p>
             </div>
           </section>
+          <div id="map"></div>
         </div>
       </div>           
     </div>

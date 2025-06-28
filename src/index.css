@@ -13,8 +13,6 @@ body {
   padding: 0 1.5rem;   /* keeps a nice gap on mobile */
 }
 
-
-
 html {
   scroll-behavior: smooth;
 }
