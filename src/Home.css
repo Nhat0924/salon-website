@@ -37,6 +37,8 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding-bottom: 0.8rem; /* space for content */;
+  z-index: 0;
 }
 
 .one-third-content {
@@ -218,7 +220,6 @@
 
 .services {
   margin-top: 4rem;
-  margin-bottom: 0.5rem;
 }
 
 .service-list {
@@ -253,6 +254,29 @@
 
 .about {
   margin-top: 4rem;
+}
+
+.about-intro {
+  font-size: 1.4rem;
+  color: #093065;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.about-intro h2 {
+  font-size: 2.5rem;
+  color: #b1b1b1;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.about-intro p {
+  margin: 0;
+  font-size: 1.3rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #093065;
 }
 /* .about h2 {
   font-size: 2rem;

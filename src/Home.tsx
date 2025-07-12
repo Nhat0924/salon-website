@@ -19,8 +19,8 @@ import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import 'leaflet/dist/leaflet.css';
-// Importing React Router components
-import { Link } from 'react-router-dom';
+// // Importing React Router components
+// import { Link } from 'react-router-dom';
 
 function Home() {
   const mapRef = useRef<HTMLDivElement | null>(null);
@@ -79,7 +79,7 @@ function Home() {
           onClick={() => {
             localStorage.removeItem("promoClosed");
             window.location.reload();
-        }}>15% OFF ALL SERVICES! CLICK HERE TO VIEW PROMOTION DETAILS</button>
+        }}>GET 15% OFF YOUR FIRST APPOINTMENT!</button>
       </div>
 
     {/* Logo and Navigation Bar */}
@@ -94,14 +94,14 @@ function Home() {
             <div className="navbar-right">
               <nav>
                 <ul className="nav-links">
-                  <li><a href="#about">Our Commitment</a></li>
-                  <li><a href="#services">Services</a></li>
+                  <li><a href="#about">About Us</a></li>
+                  <li><a href="#services">Pricing & Services</a></li>
                   <li><a href="#contact">Contact Us</a></li>
                 </ul>
               </nav>
-              <Link to="/appointment" className="cta-btn">
+              <a href="https://app.squareup.com/appointments/book/o3j24jn8pdjk6a/LMJBD06SFWQ5P/start" className="cta-btn">
                 Book Now
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -118,7 +118,7 @@ function Home() {
 
           {/* Service Cards */}
           <section className="services">
-            <h2>Our Services</h2>
+            <h2>What We Offer</h2>
             <div className="service-list">
               <div className="service-card">
                 <h3>Nail Care</h3>
@@ -137,7 +137,7 @@ function Home() {
             onClick={() => {
                   const el = document.getElementById("services");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
-                }}>Learn More</button>
+                }}>More Services</button>
           </section>
         </div>
       </div>
@@ -145,6 +145,19 @@ function Home() {
       <section className="about-description" id="about">
         {/* Our Nail Care */}
         <div className="about-content">
+          <div className="about-intro">
+          <h2>About Us</h2>
+          <p>
+            At Nice Nail Lounge, we believe in more than just nails. 
+            We’re about creating a welcoming space where you can relax, unwind, and leave feeling refreshed. 
+            Our team is dedicated to providing exceptional service, using high-quality products and the latest techniques to ensure your nails look and feel their best. 
+            Whether you’re here for a quick polish change or a full pampering session, we’re committed to making your experience enjoyable and memorable. 
+            Join us in celebrating the art of nail care and let us help you express your unique style. 
+            Your nails are our canvas, and we can’t wait to create something beautiful together!
+          </p>
+        </div>
+
+          {/* Our Nail Care */}
           <div className="about">
             <div className = "side-by-side">
               <div className="left-content">
@@ -182,7 +195,7 @@ function Home() {
               <div className="left-content">
                 <h2>Colorful Palette</h2>
                 <p>
-                  Why settle for the ordinary? We offer a wide spectrum of colors, finishes, and nail trends! From timeless classics to seasonal favorites. Our curated polish collection means you’ll always find the perfect shade to match your mood, your look, or your next adventure.
+                  Why settle for the ordinary? At Nice Nail Lounge, We offer a wide spectrum of colors, finishes, and nail trends! From timeless classics to seasonal favorites. Our curated polish collection means you’ll always find the perfect shade to match your mood, your look, or your next adventure.
                 </p>
               </div>
               <div className="vertical-divider"></div>
@@ -227,7 +240,7 @@ function Home() {
               <a href= "mailto:nicenaillounge@gmail.com">nicenaillounge@gmail.com</a>
             </div>
             <div className="footer-box social-box">
-              <h3>Follow Us</h3>
+              <h3>Social Network</h3>
               <p>
                 <a
                   href="https://www.facebook.com/p/Kims-Nails-100087780272339/"
@@ -255,6 +268,7 @@ function Home() {
                 >
                   <img src={yelpImg} alt="Yelp" className="yelp-svg-img" />
                 </a>
+                
               </p>
             </div>
           </section>
