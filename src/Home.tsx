@@ -13,6 +13,10 @@ import facebookSVG from '/src/assets/icons8-facebook.svg'
 import instaSVG from '/src/assets/icons8-instagram.svg'
 import promoImg from '/src/assets/promo.png'
 import yelpImg from '/src/assets/icons8-yelp-48.svg'
+import bookingImg from '/src/assets/healthy-beautiful-manicure-manicurist.jpg'
+import manicureImg from '/src/assets/manicure.jpg'
+import pedicureImg from '/src/assets/pedicure.jpg'
+import nailArtImg from '/src/assets/nailart.png'
 // Import Leaflet and its styles
 import L from 'leaflet';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
@@ -79,7 +83,7 @@ function Home() {
           onClick={() => {
             localStorage.removeItem("promoClosed");
             window.location.reload();
-        }}>GET 15% OFF YOUR FIRST APPOINTMENT!</button>
+        }}>GET 15% OFF YOUR FIRST SERVICE!</button>
       </div>
 
     {/* Logo and Navigation Bar */}
@@ -120,24 +124,43 @@ function Home() {
           <section className="services">
             <h2>What We Offer</h2>
             <div className="service-list">
-              <div className="service-card">
-                <h3>Nail Care</h3>
-                <p>Classic care with gentle touch and a splash of color.</p>
+              <div
+                className="service-card image-card"
+                style={{ backgroundImage: `url(${manicureImg})` }}
+              >
+                <div className="card-overlay" />
+                <div className="card-text">
+                  <h3>Nail Care</h3>
+                  <p>Classic care with gentle touch and a splash of color.</p>
+                </div>
               </div>
-              <div className="service-card">
-                <h3>Pedicure Services</h3>
-                <p>Wide choices of service for the ultimate relaxation.</p>
+
+              <div
+                className="service-card image-card"
+                style={{ backgroundImage: `url(${pedicureImg})` }}
+              >
+                <div className="card-overlay" />
+                <div className="card-text">
+                  <h3>Pedicure Services</h3>
+                  <p>Wide choices of service for the ultimate relaxation.</p>
+                </div>
               </div>
-              <div className="service-card">
-                <h3>Nail Art & Designs</h3>
-                <p>Custom art - simple, trendy, or bold. Your style!</p>
+
+              <div
+                className="service-card image-card"
+                style={{ backgroundImage: `url(${nailArtImg})` }}
+              >
+                <div className="card-overlay" />
+                <div className="card-text">
+                  <h3>Nail Art & Designs</h3>
+                  <p>Custom art - simple, trendy, or bold. Your style!</p>
+                </div>
               </div>
             </div>
-            <button className="cta-btn" 
-            onClick={() => {
-                  const el = document.getElementById("services");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }}>More Services</button>
+
+              <div className="services-cta">
+                <a href="#services" className="scroll-btn">Find Out More</a>
+              </div>
           </section>
         </div>
       </div>
@@ -146,7 +169,7 @@ function Home() {
         {/* Our Nail Care */}
         <div className="about-content">
           <div className="about-intro">
-          <h2>About Us</h2>
+          <h2>About <span>Nice Nail</span> Lounge</h2>
           <p>
             At Nice Nail Lounge, we believe in more than just nails. 
             We’re about creating a welcoming space where you can relax, unwind, and leave feeling refreshed. 
@@ -161,7 +184,7 @@ function Home() {
           <div className="about">
             <div className = "side-by-side">
               <div className="left-content">
-                <h2>Our Nail Care</h2>
+                <h2>Our <span>Nail Care</span></h2>
                 <p>
                   At Nice Nail Lounge, we blend skill, style, and a friendly touch. Whether it’s a quick polish or a full nail day, you’ll leave refreshed and smiling.
                 </p>
@@ -177,9 +200,11 @@ function Home() {
           <div className="about">
             <div className="side-by-side">
               <div className="left-content">
-                <h2>Our Nail Art</h2>
+                <h2>Our <span>Nail Art</span></h2>
                 <p>
-                  At Nice Nail Lounge, creativity is at your fingertips! Whether you’re dreaming of minimalist accents or bold, Instagram-worthy designs, our artists bring your vision to life with precision and style. Let’s make your nails your best accessory.
+                  At Nice Nail Lounge, creativity is at your fingertips! 
+                  Whether you’re dreaming of minimalist accents or bold, Instagram-worthy designs, our artists bring your vision to life with precision and style. 
+                  Let’s make your nails your best accessory.
                 </p>
               </div>
               <div className="vertical-divider"></div>
@@ -193,9 +218,10 @@ function Home() {
           <div className="about">
             <div className="side-by-side">
               <div className="left-content">
-                <h2>Colorful Palette</h2>
+                <h2>Our <span>Colorful Palette</span></h2>
                 <p>
-                  Why settle for the ordinary? At Nice Nail Lounge, We offer a wide spectrum of colors, finishes, and nail trends! From timeless classics to seasonal favorites. Our curated polish collection means you’ll always find the perfect shade to match your mood, your look, or your next adventure.
+                  Why settle for the ordinary? At Nice Nail Lounge, We offer a wide spectrum of colors, finishes, and nail trends! From timeless classics to seasonal favorites. 
+                  Our curated polish collection means you’ll always find the perfect shade to match your mood, your look, or your next adventure.
                 </p>
               </div>
               <div className="vertical-divider"></div>
@@ -207,27 +233,43 @@ function Home() {
         </div>
       </section>
       
-      <div className="other-one-third">
-        {/* Pricing */}
-        <div className="other-one-third-content">
-          <section className="price" id="services">
-            <h2>Pricing & Services</h2>
+      {/* Pricing */}
+      <section className="price" id="services">
+            <h2><span>Pricing</span> & Services</h2>
             <div className="pricing-img">
               <img src={pricing1} alt="Pricing 1" className="pricing-photo" />
               <img src={pricing2} alt="Pricing 2" className="pricing-photo" />
             </div>
-          </section>
+      </section>
+
+      {/* One Third of Page (debate whether to keep) */}
+      <div className="other-one-third">
+        <div className="other-one-third-content">
+
+          <div className="booking-wrapper">
+            {/* Booking */}
+            <section className="booking">
+              <div className="booking-overlay" />
+              <img src={bookingImg} alt="Booking" className="booking-photo" />
+              <div className="booking-content">
+                <link href="https://fonts.cdnfonts.com/css/magnolia-script" rel="stylesheet"/>
+                <h2>PICK <span>THE BEST</span> CARE<br/>FOR YOUR NAILS TODAY</h2>
+                <p>It's the perfect excuse to pamper together</p>
+                <button className="booking-btn">MAKE AN APPOINTMENT</button>
+              </div>
+            </section>
+          </div>
 
           {/* Contact Title */}
-          <div className="contact" id="contact"><h2>Contact Us</h2></div>
+          <div className="contact" id="contact"><h2><span>Contact</span> Us</h2></div>
 
           {/* Contact Card */}
           <section className="footer-boxes">
             <div className="footer-box about-box">
-              <h3>About Us</h3>
+              <h3>Info</h3>
               <p>
                 {/* Replace this with your company info */}
-                <strong>Nice Nail Lounge</strong><br />
+                <strong>P&L Beauty LLC</strong><br />
                 3111 Florence Blvd, Florence, AL 35634<br />
                 <br></br>
                 Mon - Sat: 9AM - 7PM<br />
@@ -235,12 +277,12 @@ function Home() {
               </p>
             </div>
             <div className="footer-box contact-box">
-              <h3>Contact Info</h3>
-              <p>Call Us: <a href="tel:+12563492350">(256)-349-2350</a></p>
+              <h3>Contact</h3>
+              <p>Call/Text Us: <a href="tel:+12563492350">(256)-349-2350</a></p>
               <a href= "mailto:nicenaillounge@gmail.com">nicenaillounge@gmail.com</a>
             </div>
             <div className="footer-box social-box">
-              <h3>Social Network</h3>
+              <h3>Follow Us</h3>
               <p>
                 <a
                   href="https://www.facebook.com/p/Kims-Nails-100087780272339/"
