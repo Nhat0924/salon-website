@@ -271,7 +271,7 @@ function Home() {
               <h3>Info</h3>
               <p>
                 {/* Replace this with your company info */}
-                <strong>P&L Beauty LLC</strong><br />
+                <strong>Nice Nail Lounge</strong><br />
                 3111 Florence Blvd, Florence, AL 35634<br />
                 <br></br>
                 Mon - Sat: 9AM - 7PM<br />
