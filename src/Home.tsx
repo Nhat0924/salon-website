@@ -255,7 +255,9 @@ function Home() {
                 <link href="https://fonts.cdnfonts.com/css/magnolia-script" rel="stylesheet"/>
                 <h2>PICK <span>THE BEST</span> CARE<br/>FOR YOUR NAILS TODAY</h2>
                 <p>It's the perfect excuse to pamper together</p>
-                <button className="booking-btn">MAKE AN APPOINTMENT</button>
+                <a href="https://app.squareup.com/appointments/book/o3j24jn8pdjk6a/LMJBD06SFWQ5P/start">
+                  <button className="booking-btn">MAKE AN APPOINTMENT</button>
+                </a>
               </div>
             </section>
           </div>
