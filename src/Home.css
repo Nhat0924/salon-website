@@ -120,16 +120,18 @@
     gap: 0.2rem;
   }
   .cta-btn {
-    padding: 0.45em 0.55em;
-    font-size: 0.92rem;
+    padding: 0.65em 0.75em;
+    font-weight: bold;
+    font-size: 0.75rem;
+    text-align: center;
   }
   .logo-img {
-    max-width: 130px;
-    height: auto;
+    max-width: 130px; /* Adjust for smaller screens */
+    height: auto; /* Maintain aspect ratio */
   }
   .nav-links a {
-    font-size: 0.90rem;
-    padding: 0.1rem 0.25rem;
+    text-align: center;
+    font-size: 0.75rem;
   }
 }
 
@@ -433,14 +435,8 @@
     flex-direction: column;
     align-items: center;
     gap: 1.2rem;
-  }.left-content,
-  .right-image {
-    width: 100%;
-    margin: 0;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
   }
+  
   .right-image img {
     max-width: 88vw;
   }
@@ -451,9 +447,13 @@
   .left-content, .right-image {
   width: 100% !important;
   margin: 0 !important;
-  text-align: center;
+  text-align: left !important;
   align-items: center;
   justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  
   }
   .left-content h2 {
     font-size: 1.6rem;
@@ -729,4 +729,11 @@
   width: 600px;
   margin: 2rem auto; /* center horizontally */
   border-radius: 1rem;
+}
+
+@media (max-width: 900px) {
+  #map {
+    width: 100%; /* Full width on small screens */
+    height: 250px; /* Adjust height for better visibility */
+  }
 }

@@ -2,7 +2,7 @@
   "name": "salon-website",
   "homepage": "https://nicenaillounge.com",
   "private": false,
-  "version": "1.4.1",
+  "version": "1.4.36",
   "type": "module",
   "scripts": {
     "dev": "vite --host --port 5173",
