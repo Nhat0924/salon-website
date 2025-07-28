@@ -23,12 +23,22 @@ import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import 'leaflet/dist/leaflet.css';
-// // Importing React Router components
-// import { Link } from 'react-router-dom';
+// Import Lightbox for image zoom
+import Lightbox from 'yet-another-react-lightbox-lite';
+import "yet-another-react-lightbox-lite/styles.css";
 
 function Home() {
   const mapRef = useRef<HTMLDivElement | null>(null);
   delete (L.Icon.Default.prototype as any)._getIconUrl;
+
+  const [open, setOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState<number | undefined>(undefined);
+
+
+  const pricingSlides = [
+  { src: pricing1 },
+  { src: pricing2 },
+  ];
 
   L.Icon.Default.mergeOptions({
     iconRetinaUrl: markerIcon2x,
@@ -77,7 +87,10 @@ function Home() {
         </div>
       )}
 
-      <div className="promo-popup">
+    {/* Logo and Navigation Bar */}
+      <div className="one-third-bg">
+        <div className="one-third-content">
+          <div className="promo-popup">
         <button 
           className="promo-popup-btn"
           onClick={() => {
@@ -85,10 +98,6 @@ function Home() {
             window.location.reload();
         }}>GET 15% OFF YOUR FIRST SERVICE!</button>
       </div>
-
-    {/* Logo and Navigation Bar */}
-      <div className="one-third-bg">
-        <div className="one-third-content">
           <div className="navbar">
             <div className="logo-bar">
               <a href="/">
@@ -235,12 +244,32 @@ function Home() {
       
       {/* Pricing */}
       <section className="price" id="services">
-            <h2><span>Pricing</span> & Services</h2>
-            <div className="pricing-img">
-              <img src={pricing1} alt="Pricing 1" className="pricing-photo" />
-              <img src={pricing2} alt="Pricing 2" className="pricing-photo" />
-            </div>
-      </section>
+        <h2><span>Pricing</span> & Services</h2>
+          <div className="pricing-img">
+            {pricingSlides.map((slide, i) => (
+              <img
+                key={i}
+                src={slide.src}
+                alt={`Pricing ${i + 1}`}
+                loading="lazy"
+                className="pricing-photo"
+                onClick={() => {
+                  setCurrentImage(i); // Set the current image index
+                  setOpen(true); // Open the Lightbox
+                }}
+                style={{ cursor: 'zoom-in' }}
+              />
+            ))}
+          {open && (
+            <Lightbox
+              slides={pricingSlides}
+              index={currentImage}
+              setIndex={setCurrentImage}
+            />
+          )}
+        </div>
+
+</section>
 
       {/* One Third of Page (debate whether to keep) */}
       <div className="other-one-third">
@@ -261,62 +290,63 @@ function Home() {
               </div>
             </section>
           </div>
+          <div className='contact-wrapper'>
+            {/* Contact Title */}
+            <div className="contact" id="contact"><h2><span>Contact</span> Us</h2></div>
 
-          {/* Contact Title */}
-          <div className="contact" id="contact"><h2><span>Contact</span> Us</h2></div>
+            {/* Contact Card */}
+            <section className="footer-boxes">
+              <div className="footer-box about-box">
+                <h3>Info</h3>
+                <p>
+                  {/* Replace this with your company info */}
+                  <strong>Nice Nail Lounge</strong><br />
+                  3111 Florence Blvd, Florence, AL 35634<br />
+                  <br></br>
+                  Mon - Sat: 9AM - 7PM<br />
+                  Sun: 1PM - 5PM
+                </p>
+              </div>
+              <div className="footer-box contact-box">
+                <h3>Contact</h3>
+                <p>Call/Text Us: <a href="tel:+12563492350">(256)-349-2350</a></p>
+                <a href= "mailto:nicenaillounge@gmail.com">nicenaillounge@gmail.com</a>
+              </div>
+              <div className="footer-box social-box">
+                <h3>Follow Us</h3>
+                <p>
+                  <a
+                    href="https://www.facebook.com/p/Kims-Nails-100087780272339/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="facebook-link"
+                  >
+                    {/* You can use a Facebook SVG or emoji for now */}
+                    <img src={facebookSVG} alt="Facebook" className="facebook-svg-img" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/nicenaillounge/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="insta-link"
+                  >
+                    <img src={instaSVG} alt="Instagram" className="instagram-svg-img" />
+                  </a>
 
-          {/* Contact Card */}
-          <section className="footer-boxes">
-            <div className="footer-box about-box">
-              <h3>Info</h3>
-              <p>
-                {/* Replace this with your company info */}
-                <strong>Nice Nail Lounge</strong><br />
-                3111 Florence Blvd, Florence, AL 35634<br />
-                <br></br>
-                Mon - Sat: 9AM - 7PM<br />
-                Sun: 1PM - 5PM
-              </p>
-            </div>
-            <div className="footer-box contact-box">
-              <h3>Contact</h3>
-              <p>Call/Text Us: <a href="tel:+12563492350">(256)-349-2350</a></p>
-              <a href= "mailto:nicenaillounge@gmail.com">nicenaillounge@gmail.com</a>
-            </div>
-            <div className="footer-box social-box">
-              <h3>Follow Us</h3>
-              <p>
-                <a
-                  href="https://www.facebook.com/p/Kims-Nails-100087780272339/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="facebook-link"
-                >
-                  {/* You can use a Facebook SVG or emoji for now */}
-                  <img src={facebookSVG} alt="Facebook" className="facebook-svg-img" />
-                </a>
-                <a
-                  href="https://www.instagram.com/nicenaillounge/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="insta-link"
-                >
-                  <img src={instaSVG} alt="Instagram" className="instagram-svg-img" />
-                </a>
-
-                <a
-                  href="https://www.yelp.com/biz/nice-nail-lounge-florence"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="yelp-link"
-                >
-                  <img src={yelpImg} alt="Yelp" className="yelp-svg-img" />
-                </a>
-                
-              </p>
-            </div>
-          </section>
-          <div id="map" ref={mapRef}></div>
+                  <a
+                    href="https://www.yelp.com/biz/nice-nail-lounge-florence"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="yelp-link"
+                  >
+                    <img src={yelpImg} alt="Yelp" className="yelp-svg-img" />
+                  </a>
+                  
+                </p>
+              </div>
+            </section>
+            <div id="map" ref={mapRef}></div>
+          </div>
         </div>
       </div>           
     </div>

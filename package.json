@@ -2,7 +2,7 @@
   "name": "salon-website",
   "homepage": "https://nicenaillounge.com",
   "private": false,
-  "version": "1.4.36",
+  "version": "1.5.10",
   "type": "module",
   "scripts": {
     "dev": "vite --host --port 5173",
@@ -18,7 +18,8 @@
     "leaflet": "^1.9.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router-dom": "^7.6.3"
+    "react-router-dom": "^7.6.3",
+    "yet-another-react-lightbox-lite": "^1.9.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

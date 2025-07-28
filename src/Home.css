@@ -106,6 +106,11 @@
 }
 
 @media (max-width: 700px) {
+  .promo-popup-btn {
+    font-size: 1rem; /* or any size you prefer */
+    padding: 0.5em 1em; /* optional: adjust padding for smaller screens */
+  }
+
   .navbar {
     padding: 0.7rem 0.3rem;
     gap: 0.6rem;
@@ -383,6 +388,11 @@
 .right-image {
   flex: 1 1 0;
   min-width: 0;
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1); /* Add this line */
+}
+
+.right-image:hover {
+  transform: scale(1.02);
 }
 
 .left-content {
@@ -485,6 +495,10 @@
   height: auto;
   border-radius: 0.75rem; /* Optional, for rounded corners */
   box-shadow: 0 2px 12px rgba(0,0,0,0.07); /* Optional, subtle shadow */
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1); /* Add this line */
+}
+.pricing-photo:hover {
+  transform: scale(1.03); /* Slight zoom on hover */
 }
 
 /* If you want them side by side on desktop, stacked on mobile: */
@@ -594,7 +608,7 @@
 
 .contact {
   font-size: 1.5rem;
-  color:white;
+  color:#093065;
   margin-top: 3rem;
 }
 
@@ -602,12 +616,23 @@
   color: #fab35d
 }
 
+.contact-wrapper {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: white; /* Dark blue background */
+  padding: 2rem 0; /* Add some vertical padding */
+}
+
 .footer-boxes {
   display: flex;
   justify-content: center;
   align-items: stretch;
   gap: 2.5rem;
-  margin: 0 0 2rem 0;
+  margin: 0 0 2rem 6rem;
   padding: 1.5rem 1rem 0 1rem;
 }
 
@@ -617,15 +642,18 @@
   max-width: 340px;
   padding: 1.5rem 1.2rem;
   background: #fff;
-  border-radius: 1em;
-  box-shadow: 0 2px 16px rgba(163, 105, 150, 0.06);
+  border-right: 0.8px solid lightgray;
   text-align: left;
   font-family: 'Montserrat', sans-serif;
 }
 
+.social-box {
+  border-right: 0;
+}
+
 .footer-box h3 {
   color: #093065;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.5rem;
   margin-bottom: 0.9rem;
   font-weight: bold;
@@ -635,18 +663,21 @@
   color: #3a4168;
   font-size: 1.05rem;
   line-height: 1.6;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Responsive: stack boxes on small screens */
 @media (max-width: 900px) {
   .footer-boxes {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0rem;
     align-items: stretch;
+    margin: 0 1rem;
   }
   .footer-box {
     max-width: 100%;
     text-align: center;
+    border-right: 0; /* Remove right border on small screens */
   }
 }
 
