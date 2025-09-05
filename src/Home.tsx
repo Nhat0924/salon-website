@@ -60,7 +60,7 @@ function Home() {
 
   L.marker([34.832596, -87.616722])
     .addTo(map)
-    .bindPopup('Nice Nail Lounge')
+    .bindPopup(`<p>Nice Nail Lounge</p> <a href="https://maps.app.goo.gl/LYCkstzfdspXwP2p8" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>`)
     .openPopup();
   }, []);
 
