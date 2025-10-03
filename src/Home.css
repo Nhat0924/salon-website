@@ -472,9 +472,42 @@
   }
 }
 
+.pricing-wrapper {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  margin-right: 0;
+}
+
+
+.pricing-content {
+  margin: 0 auto;
+  position: relative;
+  z-index: 1; /* make sure it's above the bg */
+  padding: 0 2rem; /* breathing room on mobile */
+}
+
+.price {
+  position: relative;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20)), 
+    url('/src/assets/blue-background-oil-abstraction-free-image.jpeg') center/cover no-repeat;
+  background-blend-mode: darken;
+  padding: 4rem 0 2rem 0; /* space top/bottom */
+  z-index: 0;
+  overflow: hidden;
+}
+
 .price h2 {
   font-size: 2rem;
   color:white
+}
+
+.price h2,
+.pricing-img {
+  position: relative;
+  z-index: 2; /* ensure text and images are above the background */
 }
 
 .price span {
@@ -486,7 +519,7 @@
   flex-direction: row;
   align-items: center;
   gap: 1.5rem;
-  margin-bottom: 5rem;
+  margin-left: 6rem;
 }
 
 .pricing-photo {
@@ -506,6 +539,8 @@
   .pricing-img {
     flex-direction: column;
     gap: 1.2rem;
+    margin-left: 0rem;
+    align-items: center;
   }
   .pricing-photo {
     max-width: 96vw;

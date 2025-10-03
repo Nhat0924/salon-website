@@ -11,7 +11,7 @@ import pricing1 from '/src/assets/1.png'
 import pricing2 from '/src/assets/2.png'
 import facebookSVG from '/src/assets/icons8-facebook.svg'
 import instaSVG from '/src/assets/icons8-instagram.svg'
-import promoImg from '/src/assets/promo.png'
+import promoImg from '/src/assets/LoyaltyProgram.png'
 import yelpImg from '/src/assets/icons8-yelp-48.svg'
 import bookingImg from '/src/assets/healthy-beautiful-manicure-manicurist.jpg'
 import manicureImg from '/src/assets/manicure.jpg'
@@ -96,7 +96,7 @@ function Home() {
           onClick={() => {
             localStorage.removeItem("promoClosed");
             window.location.reload();
-        }}>GET 15% OFF YOUR FIRST SERVICE!</button>
+        }}>NEW LOYALTY REWARDS PROGRAM! SAVE 20% ON YOUR 7TH VISITS</button>
       </div>
           <div className="navbar">
             <div className="logo-bar">
@@ -243,38 +243,42 @@ function Home() {
       </section>
       
       {/* Pricing */}
-      <section className="price" id="services">
-        <h2><span>Pricing</span> & Services</h2>
-          <div className="pricing-img">
-            {pricingSlides.map((slide, i) => (
-              <img
-                key={i}
-                src={slide.src}
-                alt={`Pricing ${i + 1}`}
-                loading="lazy"
-                className="pricing-photo"
-                onClick={() => {
-                  setCurrentImage(i); // Set the current image index
-                  setOpen(true); // Open the Lightbox
-                }}
-                style={{ cursor: 'zoom-in' }}
-              />
-            ))}
-          {open && (
-            <Lightbox
-              slides={pricingSlides}
-              index={currentImage}
-              setIndex={setCurrentImage}
-            />
-          )}
-        </div>
+      <div className="pricing-wrapper">
+        <section className="price" id="services">
+          <div className="pricing-content">
+            <h2><span>Pricing</span> & Services</h2>
+              <div className="pricing-img">
+                {pricingSlides.map((slide, i) => (
+                  <img
+                    key={i}
+                    src={slide.src}
+                    alt={`Pricing ${i + 1}`}
+                    loading="lazy"
+                    className="pricing-photo"
+                    onClick={() => {
+                      setCurrentImage(i); // Set the current image index
+                      setOpen(true); // Open the Lightbox
+                    }}
+                    style={{ cursor: 'zoom-in' }}
+                  />
+                ))}
+              {open && (
+                <Lightbox
+                  slides={pricingSlides}
+                  index={currentImage}
+                  setIndex={setCurrentImage}
+                />
+              )}
+            </div>
+          </div>
+          
+        </section>
 
-</section>
+      </div>
 
       {/* One Third of Page (debate whether to keep) */}
       <div className="other-one-third">
         <div className="other-one-third-content">
-
           <div className="booking-wrapper">
             {/* Booking */}
             <section className="booking">
