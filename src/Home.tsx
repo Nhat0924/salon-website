@@ -66,7 +66,7 @@ function Home() {
 
   const [showPromo, setShowPromo] = useState(() => !localStorage.getItem("promoClosed"));
   const handleClosePromo = () => {
-    setShowPromo(false);
+    setShowPromo(true); //remember to set this to false if you want the pop up notice. True to turn it off for now.
     localStorage.setItem("promoClosed", "true");
   };
   return (
@@ -91,12 +91,13 @@ function Home() {
       <div className="one-third-bg">
         <div className="one-third-content">
           <div className="promo-popup">
-        <button 
+        {/* <button 
           className="promo-popup-btn"
           onClick={() => {
             localStorage.removeItem("promoClosed");
             window.location.reload();
-        }}>NEW LOYALTY REWARDS PROGRAM! SAVE 20% ON YOUR 7TH VISITS</button>
+
+        }}>NEW LOYALTY REWARDS PROGRAM! SAVE 20% ON YOUR 7TH VISITS</button> */} {/** remember to uncomment for new button */}
       </div>
           <div className="navbar">
             <div className="logo-bar">
