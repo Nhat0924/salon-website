@@ -23,9 +23,19 @@ import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import 'leaflet/dist/leaflet.css';
-// Import Lightbox for image zoom
-import Lightbox from 'yet-another-react-lightbox-lite';
+// Import Lightbox for image stuff
+import LightboxLite from 'yet-another-react-lightbox-lite';
+// import Lightbox from 'yet-another-react-lightbox';
 import "yet-another-react-lightbox-lite/styles.css";
+import "yet-another-react-lightbox/styles.css";
+
+// const imageFiles = import.meta.glob("./assets/gallery/*.{jpg,jpeg,png}", {
+//   eager: true,
+// });
+
+// const gallerySlides = Object.values(imageFiles).map((mod) => ({
+//   src: (mod as { default: string }).default,
+// }));
 
 function Home() {
   const mapRef = useRef<HTMLDivElement | null>(null);
@@ -33,7 +43,8 @@ function Home() {
 
   const [open, setOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState<number | undefined>(undefined);
-
+  // const [galleryIndex, setGalleryIndex] = useState<number>(0);
+  // const [galleryOpen, setGalleryOpen] = useState<boolean>(false); // add this
 
   const pricingSlides = [
   { src: pricing1 },
@@ -62,7 +73,19 @@ function Home() {
     .addTo(map)
     .bindPopup(`<p>Nice Nail Lounge</p> <a href="https://maps.app.goo.gl/LYCkstzfdspXwP2p8" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>`)
     .openPopup();
+
   }, []);
+
+  // Carousel useEffect - separate
+  // useEffect(() => {
+  //   if (galleryOpen) return; //pause when ligthbox is open
+
+  //   const interval = setInterval(() => {
+  //     setGalleryIndex((prev) => (prev + 1) % gallerySlides.length);
+  //   }, 3000);
+
+  //     return () => clearInterval(interval);
+  //   }, [galleryOpen, gallerySlides.length]);
 
   // const [showPromo, setShowPromo] = useState(() => !localStorage.getItem("promoClosed"));
   // const handleClosePromo = () => {
@@ -184,9 +207,8 @@ function Home() {
           <p>
             At Nice Nail Lounge, we believe in more than just nails. 
             We’re about creating a welcoming space where you can relax, unwind, and leave feeling refreshed. 
-            Our team is dedicated to providing exceptional service, using high-quality products and the latest techniques to ensure your nails look and feel their best. 
-            Whether you’re here for a quick polish change or a full pampering session, we’re committed to making your experience enjoyable and memorable. 
-            Join us in celebrating the art of nail care and let us help you express your unique style. 
+            Whether you’re here for a quick polish change or a full pampering session, 
+            we’re committed to making your experience enjoyable and memorable. 
             Your nails are our canvas, and we can’t wait to create something beautiful together!
           </p>
         </div>
@@ -229,10 +251,9 @@ function Home() {
           <div className="about">
             <div className="side-by-side">
               <div className="left-content">
-                <h2>Our <span>Colorful Palette</span></h2>
+                <h2>Our <span>Nail Color</span></h2>
                 <p>
-                  Why settle for the ordinary? At Nice Nail Lounge, We offer a wide spectrum of colors, finishes, and nail trends! From timeless classics to seasonal favorites. 
-                  Our curated polish collection means you’ll always find the perfect shade to match your mood, your look, or your next adventure.
+                  At Nice Nail Lounge, we offer a wide spectrum of colors, finishes, and nail trends! Our curated polish collection means you’ll always find the perfect shade to match your mood, your look, or your next adventure.
                 </p>
               </div>
               <div className="vertical-divider"></div>
@@ -264,18 +285,16 @@ function Home() {
                     style={{ cursor: 'zoom-in' }}
                   />
                 ))}
-              {open && (
-                <Lightbox
-                  slides={pricingSlides}
-                  index={currentImage}
-                  setIndex={setCurrentImage}
-                />
-              )}
-            </div>
+                {open && (
+                  <LightboxLite
+                    slides={pricingSlides}
+                    index={currentImage}
+                    setIndex={setCurrentImage}
+                  />
+                )}
+              </div>
           </div>
-          
         </section>
-
       </div>
 
       {/* One Third of Page (debate whether to keep) */}
@@ -296,6 +315,28 @@ function Home() {
               </div>
             </section>
           </div>
+          
+          <div className='gallery-wrapper'>
+            {/* Gallery */}
+            {/* <section className="gallery">
+              <div className='gallery-content'>
+                <h2>Gallery</h2>
+                <img
+                  src={gallerySlides[galleryIndex ?? 0].src}
+                  onClick={() => setGalleryOpen(true)}
+                />
+                {galleryOpen && (
+                  <Lightbox
+                    open={galleryOpen}
+                    close={() => setGalleryOpen(false)}
+                    slides={gallerySlides}
+                    index={galleryIndex}
+                  />
+                )}
+              </div>
+            </section> */}
+          </div>
+
           <div className='contact-wrapper'>
             {/* Contact Title */}
             <div className="contact" id="contact"><h2><span>Contact</span> Us</h2></div>

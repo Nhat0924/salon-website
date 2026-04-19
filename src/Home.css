@@ -119,6 +119,7 @@
     gap: 0.6rem;
   }
   .nav-links {
+    text-align: center;
     gap: 0.6rem;
   }
   .logo-bar {
@@ -135,7 +136,6 @@
     height: auto; /* Maintain aspect ratio */
   }
   .nav-links a {
-    text-align: center;
     font-size: 0.75rem;
   }
 }
@@ -420,8 +420,8 @@
 }
 
 .left-content h2 {
-  margin-left: -5rem;
-  margin-right: 10rem;
+  margin-left: -4rem;
+  margin-right: 4rem;
   color: #093065
 }
 
