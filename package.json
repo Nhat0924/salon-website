@@ -19,6 +19,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3",
+    "swiper": "^12.1.4",
     "yet-another-react-lightbox-lite": "^1.9.0"
   },
   "devDependencies": {

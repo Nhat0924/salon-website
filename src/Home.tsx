@@ -3,6 +3,7 @@ import './Home.css'
 import { useRef, useEffect, useState } from 'react';
 // Import images and assets
 import logo from '/src/assets/dark_nn.png'
+import awardLogo from '/src/assets/award-logo.png'
 import heroImg from '/src/assets/chelson-tamares-SyCC0GQi5S4-unsplash.jpg'
 import nailCare from '/src/assets/pexels-cottonbro-3997386.jpg'
 import nailArt from '/src/assets/pbc_set_48_v__Main_v2.png'
@@ -11,7 +12,7 @@ import pricing1 from '/src/assets/1.png'
 import pricing2 from '/src/assets/2.png'
 import facebookSVG from '/src/assets/icons8-facebook.svg'
 import instaSVG from '/src/assets/icons8-instagram.svg'
-// import promoImg from '/src/assets/LoyaltyProgram.png'
+import promoImg from '/src/assets/Award.png'
 import yelpImg from '/src/assets/icons8-yelp-48.svg'
 import bookingImg from '/src/assets/healthy-beautiful-manicure-manicurist.jpg'
 import manicureImg from '/src/assets/manicure.jpg'
@@ -25,17 +26,12 @@ import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import 'leaflet/dist/leaflet.css';
 // Import Lightbox for image stuff
 import LightboxLite from 'yet-another-react-lightbox-lite';
-// import Lightbox from 'yet-another-react-lightbox';
 import "yet-another-react-lightbox-lite/styles.css";
-import "yet-another-react-lightbox/styles.css";
-
-// const imageFiles = import.meta.glob("./assets/gallery/*.{jpg,jpeg,png}", {
-//   eager: true,
-// });
-
-// const gallerySlides = Object.values(imageFiles).map((mod) => ({
-//   src: (mod as { default: string }).default,
-// }));
+// Import Swiper for carousel gallery
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Autoplay, Navigation } from 'swiper/modules';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
 
 function Home() {
   const mapRef = useRef<HTMLDivElement | null>(null);
@@ -43,8 +39,6 @@ function Home() {
 
   const [open, setOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState<number | undefined>(undefined);
-  // const [galleryIndex, setGalleryIndex] = useState<number>(0);
-  // const [galleryOpen, setGalleryOpen] = useState<boolean>(false); // add this
 
   const pricingSlides = [
   { src: pricing1 },
@@ -76,27 +70,22 @@ function Home() {
 
   }, []);
 
-  // Carousel useEffect - separate
-  // useEffect(() => {
-  //   if (galleryOpen) return; //pause when ligthbox is open
+  // const imageFiles = import.meta.glob("./assets/gallery/*.{jpg,jpeg,png}", {
+  // eager: true,
+  // });
+  // const images = Object.values(imageFiles).map((mod) => mod.default);
 
-  //   const interval = setInterval(() => {
-  //     setGalleryIndex((prev) => (prev + 1) % gallerySlides.length);
-  //   }, 3000);
 
-  //     return () => clearInterval(interval);
-  //   }, [galleryOpen, gallerySlides.length]);
-
-  // const [showPromo, setShowPromo] = useState(() => !localStorage.getItem("promoClosed"));
-  // const handleClosePromo = () => {
-  //   setShowPromo(false);
-  //   localStorage.setItem("promoClosed", "true");
-  // };
+  const [showPromo, setShowPromo] = useState(() => !localStorage.getItem("promoClosed"));
+  const handleClosePromo = () => {
+    setShowPromo(false);
+    localStorage.setItem("promoClosed", "true");
+  };
 
   return (
     <div className="main-wrapper">
       {/* PROMO POPUP */}
-      {/* {showPromo && (
+      {showPromo && (
         <div className="promo-modal">
           <div className="promo-modal-content">
             <button
@@ -106,22 +95,32 @@ function Home() {
             >
               ×
             </button>
-            <img src={promoImg} alt="Promotion" className="promo-img" />
+            <a
+              href="https://www.facebook.com/share/p/1ayADdanCZ/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={promoImg}
+                alt="Promotion"
+                className="promo-img"
+              />
+            </a>
           </div>
         </div>
-      )} */}
+      )}
 
     {/* Logo and Navigation Bar */}
       <div className="one-third-bg">
         <div className="one-third-content">
           <div className="promo-popup">
-        {/* <button 
+        <button 
           className="promo-popup-btn"
           onClick={() => {
             localStorage.removeItem("promoClosed");
             window.location.reload();
 
-        }}>NEW LOYALTY REWARDS PROGRAM! SAVE 20% ON YOUR 7TH VISITS</button> */} {/** remember to uncomment for new button */}
+        }}>BEST NAIL SALON OF 2026!!!</button> {/** remember to uncomment for new button */}
       </div>
           <div className="navbar">
             <div className="logo-bar">
@@ -316,26 +315,30 @@ function Home() {
             </section>
           </div>
           
-          <div className='gallery-wrapper'>
-            {/* Gallery */}
-            {/* <section className="gallery">
-              <div className='gallery-content'>
-                <h2>Gallery</h2>
-                <img
-                  src={gallerySlides[galleryIndex ?? 0].src}
-                  onClick={() => setGalleryOpen(true)}
-                />
-                {galleryOpen && (
-                  <Lightbox
-                    open={galleryOpen}
-                    close={() => setGalleryOpen(false)}
-                    slides={gallerySlides}
-                    index={galleryIndex}
-                  />
-                )}
+          {/* <div className='gallery-wrapper'>
+            <section className='carousel-gallery'>
+              <h2>Gallery</h2>
+
+              <div className='carousel-card'>
+                <Swiper
+                  modules={[Autoplay, Navigation]}
+                  navigation
+                  autoplay={{delay: 3000, disableOnInteraction: false}}
+                  loop
+                  spaceBetween={20}
+                  slidesPerView={1}
+                  >
+
+                  {images.map((src, index) => (
+                    <SwiperSlide key={index}>
+                      <img src={src} className="carousel-image" />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </div>
-            </section> */}
-          </div>
+
+            </section>
+          </div> */}
 
           <div className='contact-wrapper'>
             {/* Contact Title */}
@@ -392,6 +395,13 @@ function Home() {
                 </p>
               </div>
             </section>
+            <div className="award-logo-wrapper">
+              <img
+                src={awardLogo}
+                alt="Best of 2026 Award"
+                className="award-logo"
+              />
+            </div>
             <div id="map" ref={mapRef}></div>
           </div>
         </div>

@@ -75,6 +75,7 @@
 }
 
 .nav-links {
+  text-align: center;
   list-style: none;
   display: flex;
   gap: 1.5rem;
@@ -103,6 +104,14 @@
 
 .cta-btn:hover {
   background: #2995b6;
+}
+
+@media (max-width: 900px) {
+  .cta-btn{
+    text-align: center;
+    padding: 0.75em;
+  }
+  
 }
 
 @media (max-width: 700px) {
@@ -653,6 +662,80 @@
   }
 }
 
+/* Full section background */
+.gallery-wrapper {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: white; /* Dark blue background */
+  padding: 2rem 0; /* Add some vertical padding */
+}
+
+/* Center content */
+.carousel-gallery {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Title */
+.gallery-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* Each slide container */
+.slide-card {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  background: white;
+}
+
+/* Image styling */
+.slide-card img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* Subtle hover zoom */
+.slide-card:hover img {
+  transform: scale(1.04);
+}
+
+/* Position + style arrows */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #111;
+  background: rgba(255, 255, 255, 0.9);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Arrow icon size */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Pull arrows slightly inward */
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
 
 .contact {
   font-size: 1.5rem;
@@ -671,7 +754,7 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  background-color: white; /* Dark blue background */
+  background-color: #ffffff; /* Dark blue background */
   padding: 2rem 0; /* Add some vertical padding */
 }
 
@@ -731,7 +814,7 @@
 
 .promo-modal {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background: rgba(40, 38, 71, 0.44);
   display: flex;
   align-items: center;
@@ -741,55 +824,81 @@
 }
 
 .promo-modal-content {
-  background: #fff;
-  border-radius: 1.25em;
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-  max-width: 98vw;
-  max-height: 95vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
-  animation: popIn 0.25s;
-}
-
-.close-btn {
-  background: none;
+  background: transparent;
+  padding: 0;
   border: none;
-  color: #555;
-  font-size: 2.7rem;
-  font-weight: 700;
-  cursor: pointer;
-  margin-bottom: 0rem;
-  align-self: flex-end;
-  transition: color 0.15s;
-  position: static;
-}
-.close-btn:hover {
-  color: #d74c4c;
+  box-shadow: none;
+  width: fit-content;
+  animation: popIn 0.25s ease;
 }
 
 .promo-img {
-  max-width: 85vw;
-  max-height: 75vh;
-  width: 510px;    /* Will scale down on small screens */
-  height: auto;
-  border-radius: 1.2em;
   display: block;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+  width: min(92vw, 540px);
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 1.25rem;
+  border: 6px solid white;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+}
+
+.promo-img {
+  border: 4px solid rgba(255,255,255,0.95);
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: #093065;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+  z-index: 5;
+}
+
+.close-btn:hover {
+  transform: scale(1.08);
+  background: #093065;
+  color: white;
 }
 
 /* Responsive: shrink modal/promo image on small screens */
 @media (max-width: 600px) {
-  .promo-modal-content {
-    padding: 1.2rem 0.2rem 1rem 0.2rem;
-    max-width: 99vw;
+  promo-modal {
+    padding: 1rem;
   }
+
+  .promo-modal-content {
+    width: 92vw;
+    border-width: 4px;
+    border-radius: 1rem;
+  }
+
   .promo-img {
-    max-width: 99vw;
-    width: 100vw;
-    border-radius: 0.6em;
+    width: 100%;
+    max-height: 78vh;
+  }
+
+  .close-btn {
+    width: 34px;
+    height: 34px;
+
+    top: 8px;
+    right: 8px;
+
+    font-size: 1.4rem;
   }
 }
 
@@ -801,6 +910,33 @@
 @keyframes popIn {
   from { transform: scale(0.93); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+
+.award-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.award-logo {
+  width: 220px;
+  height: auto;
+  opacity: 0.96;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.award-logo:hover {
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
+  .award-logo {
+    width: 170px;
+  }
 }
 
 #map {
