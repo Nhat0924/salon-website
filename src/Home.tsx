@@ -12,7 +12,7 @@ import pricing1 from '/src/assets/1.png'
 import pricing2 from '/src/assets/2.png'
 import facebookSVG from '/src/assets/icons8-facebook.svg'
 import instaSVG from '/src/assets/icons8-instagram.svg'
-import promoImg from '/src/assets/Award.png'
+import promoImg from '/src/assets/Announcement.png'
 import yelpImg from '/src/assets/icons8-yelp-48.svg'
 import bookingImg from '/src/assets/healthy-beautiful-manicure-manicurist.jpg'
 import manicureImg from '/src/assets/manicure.jpg'
@@ -120,7 +120,7 @@ function Home() {
             localStorage.removeItem("promoClosed");
             window.location.reload();
 
-        }}>BEST NAIL SALON OF 2026!!!</button> {/** remember to uncomment for new button */}
+        }}>BOOKING SITE MAINTAINENCE!!</button> {/** remember to uncomment for new button */}
       </div>
           <div className="navbar">
             <div className="logo-bar">
