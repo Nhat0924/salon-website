@@ -12,7 +12,7 @@ import pricing1 from '/src/assets/1.png'
 import pricing2 from '/src/assets/2.png'
 import facebookSVG from '/src/assets/icons8-facebook.svg'
 import instaSVG from '/src/assets/icons8-instagram.svg'
-import promoImg from '/src/assets/Announcement.png'
+// import promoImg from '/src/assets/Announcement.png'
 import yelpImg from '/src/assets/icons8-yelp-48.svg'
 import bookingImg from '/src/assets/healthy-beautiful-manicure-manicurist.jpg'
 import manicureImg from '/src/assets/manicure.jpg'
@@ -76,16 +76,16 @@ function Home() {
   // const images = Object.values(imageFiles).map((mod) => mod.default);
 
 
-  const [showPromo, setShowPromo] = useState(() => !localStorage.getItem("promoClosed"));
-  const handleClosePromo = () => {
-    setShowPromo(false);
-    localStorage.setItem("promoClosed", "true");
-  };
+  // const [showPromo, setShowPromo] = useState(() => !localStorage.getItem("promoClosed"));
+  // const handleClosePromo = () => {
+  //   setShowPromo(false);
+  //   localStorage.setItem("promoClosed", "true");
+  // };
 
   return (
     <div className="main-wrapper">
       {/* PROMO POPUP */}
-      {showPromo && (
+      {/* {showPromo && (
         <div className="promo-modal">
           <div className="promo-modal-content">
             <button
@@ -108,19 +108,19 @@ function Home() {
             </a>
           </div>
         </div>
-      )}
+      )} */}
 
     {/* Logo and Navigation Bar */}
       <div className="one-third-bg">
         <div className="one-third-content">
           <div className="promo-popup">
-        <button 
+        {/* <button 
           className="promo-popup-btn"
           onClick={() => {
             localStorage.removeItem("promoClosed");
             window.location.reload();
 
-        }}>BOOKING SITE MAINTAINENCE!!</button> {/** remember to uncomment for new button */}
+        }}>BOOKING SITE MAINTAINENCE!!</button> */}
       </div>
           <div className="navbar">
             <div className="logo-bar">
